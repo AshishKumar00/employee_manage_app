@@ -1,0 +1,111 @@
+
+<title>Department Master</title>
+
+
+
+<div class="container mt-5">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-10">
+
+<div class="card shadow-lg border-0">
+
+<!-- Card Header -->
+<div class="card-header bg-primary text-white">
+<h5 class="mb-0 page-title">Department Management</h5>
+</div>
+
+<!-- Card Body -->
+<div class="card-body">
+
+<!-- Form Section -->
+<div class="row g-3 align-items-end">
+
+<div class="col-md-5">
+<label class="form-label fw-semibold">Department Name</label>
+<input type="text" [(ngModel)]="newDeptObj.departmentName" class="form-control" placeholder="Enter Department Name">
+</div>
+
+<div class="col-md-2">
+<label class="form-label d-block fw-semibold">Status</label>
+<div class="form-check">
+<input [(ngModel)]="newDeptObj.isActive"  class="form-check-input" type="checkbox" id="isActive">
+<label class="form-check-label" for="isActive">
+Active
+</label>
+</div>
+</div>
+
+<div class="col-md-2">
+    @if(newDeptObj.departmentId==0){
+<button (click)="onSaveDept()" class="btn btn-success w-100">Save</button>
+    }
+
+    @else{
+        <button (click)="onUpdateDept()" class="btn btn-warning w-100">Update</button>
+
+    }
+</div>
+
+<div class="col-md-2">
+<button (click)="onReset()" class="btn btn-outline-secondary w-100">
+Reset
+</button>
+</div>
+
+</div>
+
+<hr class="my-4">
+
+<!-- Table Section -->
+<div class="table-responsive">
+
+<table class="table table-hover table-bordered align-middle">
+
+<thead class="table-light">
+<tr>
+<th style="width:70px">ID</th>
+<th>Department Name</th>
+<th style="width:150px">Status</th>
+<th style="width:180px">Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+    @for(item of deptList; track $index ){
+<tr>
+<td>{{$index + 1}}</td>
+<td>{{item.departmentName}}</td>
+<td>{{item.isActive}}</td>
+<td>
+<span class="badge bg-success">Active</span>
+</td>
+<td>
+<button class="btn btn-sm btn-warning mx-2" (click)="onEdit(item)">Edit</button>
+<button class="btn btn-sm btn-danger" (click)="onDelete(item.departmentId)">Delete</button>
+</td>
+</tr>
+    }
+
+
+
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+

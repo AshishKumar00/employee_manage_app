@@ -1,0 +1,97 @@
+<div class="container mt-5">
+
+    <!-- FORM CARD -->
+
+    <div class="card shadow-lg form-card">
+
+        <div class="card-header bg-primary text-white text-center">
+            <h3>Designation Form</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form [formGroup]="designationForm">
+
+                <!-- Department Dropdown -->
+                <div class="mb-3">
+                    <label class="form-label">Department Name</label>
+                    <select formControlName="departmentId" class="form-select">
+                    <option value="">Select Department</option>
+                        @for (item of departmentList; track item.departmentId) {
+                            <option [value]="item.departmentId">
+                                {{ item.departmentName }}
+                            </option>
+                        }
+                    </select>
+                </div>
+
+                
+                <!-- Designation Name -->
+                <div class="mb-3">
+                    <label class="form-label">Designation Name</label>
+                    <input type="text" formControlName="designationName" class="form-control"
+                        placeholder="Enter designation Name">
+                </div>
+
+                <!-- <button (click)="onSave()" class="btn btn-success btn-animate">Save</button> -->
+
+
+                <div class="text-center">
+                    @if (!isEditMode){
+                    <button (click)="onSave()" class="btn btn-success btn-animate">Save</button>
+                    }
+                    @else {
+                    <button (click)="onSave()" class="btn btn-warning btn-animate">Update</button>
+                    }
+                    <button (click)="resetForm()" class="btn btn-secondary btn-animate">Reset</button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- TABLE CARD -->
+
+    <div class="card shadow-lg mt-5 table-card">
+
+        <div class="card-header bg-dark text-white text-center">
+            <h3>Designation List</h3>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-hover text-center">
+
+                <thead class="table-primary">
+                    <tr>
+                        <th>ID</th>
+                        <th>Department</th>
+                        <th>Designation Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @for (item of $designationList | async; track $index ){
+                    <tr>
+                        <td>{{$index}}</td>
+                        <td>{{item.departmentName}}</td>
+                        <td>{{item.designationName}}</td>
+                        <td>
+                            <button (click)="onEdit(item)" class="btn btn-warning btn-sm">Edit</button>
+                            <button (click)="onDelete(item.designationId)" class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

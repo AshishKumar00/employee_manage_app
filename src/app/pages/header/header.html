@@ -1,0 +1,98 @@
+
+<div class="d-flex">
+
+<!-- Sidebar -->
+<div class="sidebar bg-dark text-white" [class.collapsed]="isCollapsed">
+
+    <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
+        <h5 class="m-0" *ngIf="!isCollapsed">ADMIN</h5>
+        <button class="btn btn-sm btn-light" (click)="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    @if(loggedEmpData.role == "Hr"){
+    <ul class="nav flex-column mt-3">
+
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/dashboard">
+                <i class="fas fa-home"></i>
+                <span *ngIf="!isCollapsed"> Dashboard</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/users">
+                <i class="fas fa-users"></i>
+                <span *ngIf="!isCollapsed"> Users</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/projects">
+                <i class="fas fa-folder"></i>
+                <span *ngIf="!isCollapsed"> Projects</span>
+            </a>
+        </li>
+
+        
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/department">
+                <i class="fas fa-folder"></i>
+                <span *ngIf="!isCollapsed"> Department</span>
+            </a>
+        </li>
+
+         <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/designation">
+                <i class="fas fa-cog"></i>
+                <span *ngIf="!isCollapsed"> Designation</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/new-employee/0">
+            <i class="fas fa-users"></i>
+                <span *ngIf="!isCollapsed">New Employee</span>
+            </a>
+        </li>
+
+         <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/employee">
+                <i class="fas fa-users"></i>
+                <span *ngIf="!isCollapsed"> Employee</span>
+            </a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/settings">
+                <i class="fas fa-cog"></i>
+                <span *ngIf="!isCollapsed"> Settings</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-white" href="#" (click)="logout(); $event.preventDefault()">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span *ngIf="!isCollapsed"> Logout</span>
+            </a>
+        </li>
+
+    </ul>
+    }
+
+    <!-- <div class="topbar">
+        <i class="fa-solid fa-bars toggle-btn me-3" (click)="toggleSidebar()"></i>
+        <h5 class="mb-0">Admin Dashboard</h5>
+    </div> -->
+</div>
+
+<!-- Main Content -->
+<div class="content flex-grow-1 p-4">
+
+    <router-outlet></router-outlet>
+
+</div>
+
+</div>

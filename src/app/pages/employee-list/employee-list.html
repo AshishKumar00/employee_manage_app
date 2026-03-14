@@ -1,0 +1,64 @@
+<p>employee-list works!</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee List</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container mt-4">
+
+  <h3 class="mb-3">Employee List</h3>
+
+  
+  <!-- Table -->
+  <table class="table table-bordered table-striped table-hover">
+
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>ContactNo</th>
+        <th>City</th>
+        <th>Department</th>
+        <th>Designation</th>
+        <th>Role</th>
+        <th class="text-center">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        @for (item of employeeList(); track $index){
+      <tr>
+        <td>{{$index}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.contactNo}}</td>
+        <td>{{item.city}}</td>
+        <td>{{item.designationName}}</td>
+        <td>{{item.departmentName}}</td>
+        <td>{{item.role}}</td>
+       
+        <td>
+          <button [routerLink]="'/new-employee/'+ item.employeeId" class="btn btn-sm btn-warning">Edit</button>
+          <button class="btn btn-sm btn-danger">Delete</button>
+        </td>
+      </tr>
+    }
+
+       
+      
+
+    </tbody>
+
+  </table>
+
+</div>
+
+</body>
+</html>

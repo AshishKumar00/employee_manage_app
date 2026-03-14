@@ -1,0 +1,117 @@
+
+
+<div class="container mt-5">
+<div class="card shadow">
+
+<div class="card-header bg-primary text-white">
+<h4>Employee Registration Form</h4>
+</div>
+
+<div class="card-body">
+
+<!-- Personal Information -->
+<h5 class="mb-3 text-primary">Personal Information</h5>
+
+<div class="row mb-3">
+<div class="col-md-6">
+<label class="form-label">Name</label>
+<!-- <input type="text" [disable]="loggedEmpData.role != 'Hr'" [(ngModel)]="newEmployeeObj.name" class="form-control"  placeholder="Enter name"> -->
+<input type="text" [disabled]="loggedEmpData.role != 'Hr'" [(ngModel)]="newEmployeeObj.name" class="form-control" placeholder="Enter name">
+
+</div>
+
+<div class="col-md-6">
+<label class="form-label">Email</label>
+<input type="email" [(ngModel)]="newEmployeeObj.email" class="form-control" placeholder="Enter email">
+</div>
+</div>
+
+<!-- Contact Information -->
+<h5 class="mb-3 text-primary">Contact Information</h5>
+
+<div class="row mb-3">
+<div class="col-md-6">
+<label class="form-label">Contact Number</label>
+<input type="text" [(ngModel)]="newEmployeeObj.contactNo" class="form-control" placeholder="Enter contact number">
+</div>
+
+<div class="col-md-6">
+<label class="form-label">Alternate Contact</label>
+<input type="text" [(ngModel)]="newEmployeeObj.altConatctNo"  class="form-control" placeholder="Enter alternate contact">
+</div>
+</div>
+
+<!-- Address Information -->
+<h5 class="mb-3 text-primary">Address Information</h5>
+
+
+<div class="row mb-3">
+<div class="col-md-4">
+<label class="form-label">Address</label>
+<input type="text" [disabled]="loggedEmpData.role != 'Hr'" [(ngModel)]="newEmployeeObj.address" class="form-control" placeholder="Address">
+</div>
+
+<div class="col-md-4">
+<label class="form-label">City</label>
+<input type="text" [disabled]="loggedEmpData.role != 'Hr'" [(ngModel)]="newEmployeeObj.city" class="form-control" placeholder="City">
+</div>
+
+<div class="col-md-4">
+<label class="form-label">State</label>
+<input type="text" [disabled]="loggedEmpData.role != 'Hr'" [(ngModel)]="newEmployeeObj.state" class="form-control" placeholder="State">
+</div>
+
+<div class="col-md-4">
+<label class="form-label">Pincode</label>
+<input type="text" [disabled]="loggedEmpData.role != 'Hr'" [(ngModel)]="newEmployeeObj.pincode" class="form-control" placeholder="Pincode">
+</div>
+</div>
+
+<!-- Job Information -->
+<h5 class="mb-3 text-primary">Job Information</h5>
+
+<div class="row mb-3">
+<div class="col-md-4">
+<label class="form-label">Designation </label>
+<!-- <input type="number"  class="form-control" placeholder="designationId"> -->
+<select [disabled]="loggedEmpData.role != 'Hr'" class="form-select" [(ngModel)]="newEmployeeObj.designationId" >
+        <option selected>Select Designation</option>
+    @for (item of $designationList | async; track $index){
+    <option [value]="item.designationId">{{item.departmentName}}-{{item.designationName}}</option>0
+    }
+</select>
+</div>
+
+<div class="col-md-4">
+<label class="form-label">Role</label>
+<select class="form-select" [disabled]="loggedEmpData.role != 'Hr'" [(ngModel)]="newEmployeeObj.role" >
+    <option selected>Select Role</option>
+    <option>HR</option>
+      <option>Employee</option>
+</select>
+</div>
+</div>
+
+<!-- //Note Date and time shouldd be handled by API Side -->
+
+<div class="text-end">
+   
+    <button type="button" class="btn btn-secondary">Reset</button>
+
+    @if (newEmployeeObj.employeeId  == 0){
+        <button type="button" class="btn btn-success" (click)="onSaveEmp()">
+            Save Employee
+        </button>
+    } @else{
+         <button type="button" class="btn btn-warning" (click)="onSaveEmp()">
+            Update Employee
+        </button>
+    }
+    
+</div>
+
+
+</div>
+</div>
+</div>
+

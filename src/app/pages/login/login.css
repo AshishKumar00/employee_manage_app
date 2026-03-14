@@ -1,0 +1,94 @@
+
+.parent{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background: linear-gradient(135deg,#667eea,#764ba2);
+font-family: Arial, sans-serif;
+overflow:hidden;
+}
+
+/* Floating animation background */
+.circle{
+position:absolute;
+border-radius:50%;
+background:rgba(255,255,255,0.15);
+animation: float 8s infinite ease-in-out;
+}
+
+.circle:nth-child(1){
+width:120px;
+height:120px;
+top:10%;
+left:20%;
+}
+
+.circle:nth-child(2){
+width:80px;
+height:80px;
+bottom:20%;
+right:25%;
+animation-delay:2s;
+}
+
+.circle:nth-child(3){
+width:150px;
+height:150px;
+bottom:10%;
+left:10%;
+animation-delay:4s;
+}
+
+@keyframes float{
+0%{transform:translateY(0px)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0px)}
+}
+
+/* Login card */
+.login-card{
+width:100%;
+max-width:400px;
+border-radius:15px;
+padding:30px;
+background:white;
+box-shadow:0 15px 40px rgba(0,0,0,0.2);
+animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* Input animation */
+.form-control{
+border-radius:10px;
+transition:0.3s;
+}
+
+.form-control:focus{
+box-shadow:0 0 10px rgba(118,75,162,0.5);
+border-color:#764ba2;
+}
+
+/* Button animation */
+.btn-login{
+background:#764ba2;
+border:none;
+border-radius:25px;
+transition:0.3s;
+}
+
+.btn-login:hover{
+background:#5a3d91;
+transform:scale(1.05);
+}
+
